@@ -13,9 +13,9 @@ def review_list_api_view(request):
 
 
 @api_view(["GET"])
-def review_detail_api_view(request):
+def review_detail_api_view(request, id):
     try:
-        review = Review.objects.all(id=id)
+        review = Review.objects.get(id=id)
     except Review.DoesNotExist:
         return Response(data={'error': "Review not found!"},
                         status=status.HTTP_404_NOT_FOUND)
@@ -31,9 +31,9 @@ def category_list_api_view(request):
 
 
 @api_view(['GET'])
-def category_detail_api_view(request):
+def category_detail_api_view(request, id):
     try:
-        category = Category.objects.all(id=id)
+        category = Category.objects.get(id=id)
     except Product.DoesNotExist:
         return Response(data={'error': "Category not found!"},
                         status=status.HTTP_404_NOT_FOUND)
@@ -51,7 +51,7 @@ def product_list_api_view(request):
 @api_view(["GET"])
 def product_derail_api_view(request, id):
     try:
-        product = Product.objects.all(id=id)
+        product = Product.objects.get(id=id)
     except Product.DoesNotExist:
         return Response(data={'error': "Product not found!"},
                         status=status.HTTP_404_NOT_FOUND)
