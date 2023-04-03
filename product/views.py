@@ -1,8 +1,15 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from product.models import Product, Review, Category
-from product.serializers import ProductSerializer, CategorySerializer, ReviewSerializer
+from product.serializers import ProductSerializer, CategorySerializer, ReviewSerializer, ProductReviewSerializer
 from rest_framework import status
+
+
+@api_view(["GET"])
+def product_review_list(request):
+    products_reviews = Product.objects.all()
+    serializer = ProductReviewSerializer(products_reviews, many=True)
+    return Response(data=serializer.data)
 
 
 @api_view(["GET"])
