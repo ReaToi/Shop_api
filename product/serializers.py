@@ -27,3 +27,21 @@ class ProductReviewSerializer(serializers.ModelSerializer):
         fields = "id title descriptions price category avg_rating".split()
 
 
+class CategoryValidateSerializer(serializers.Serializer):
+    name = serializers.CharField()
+
+
+class ProductValidateSerializer(serializers.Serializer):
+    title = serializers.CharField()
+    descriptions = serializers.CharField()
+    price = serializers.IntegerField()
+    category = serializers.IntegerField()
+
+
+class ReviewValidateSerializer(serializers.Serializer):
+    text = serializers.CharField()
+    product = serializers.IntegerField()
+    stars = serializers.IntegerField()
+
+
+
