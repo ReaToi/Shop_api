@@ -41,4 +41,3 @@ class Review(models.Model):
     text = models.TextField()
     product = models.ForeignKey(Product, on_delete=models.PROTECT, related_name='review_list')
     stars = models.IntegerField(default=5, choices=((iterator_, '* ' * iterator_) for iterator_ in range(1, 6)))
-
